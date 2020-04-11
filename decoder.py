@@ -21,10 +21,10 @@ if __name__ == "__main__":
   input_filename = sys.argv[2]
   output_filename = sys.argv[3]
 
-  print "Running experiment: {}.".format(name)
+  print("Running experiment: {}.".format(name))
   config = util.get_config("experiments.conf")[name]
   config["log_dir"] = util.mkdirs(os.path.join(config["log_root"], name))
-  print "Loading data from: {}.".format(input_filename)
+  print("Loading data from: {}.".format(input_filename))
   config["eval_path"] = input_filename
   config["batch_size"] = -1
   config["max_tokens_per_batch"] = -1
@@ -82,5 +82,5 @@ if __name__ == "__main__":
         f.write(json.dumps(doc_example))
         f.write("\n")
         if (i + 1) % 10 == 0:
-          print "Decoded {} documents.".format(i + 1)
+          print("Decoded {} documents.".format(i + 1))
 
