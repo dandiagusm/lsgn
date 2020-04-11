@@ -39,7 +39,7 @@ def mkdirs(path):
 def load_char_dict(char_vocab_path):
   vocab = [u"<unk>"]
   with open(char_vocab_path) as f:
-    vocab.extend(unicode(c, "utf-8").strip() for c in f.readlines())
+    vocab.extend(str(c, "utf-8").strip() for c in f.readlines())
   char_dict = collections.defaultdict(int)
   char_dict.update({c:i for i,c in enumerate(vocab)})
   return char_dict
@@ -192,7 +192,7 @@ class EmbeddingDictionary(object):
             vocab_size = int(splits[0])
             assert int(splits[1]) == self.size
           else:
-            #if len(splits) != self.size + 1: continue
+            if len(splits) != self.size + 1: continue
             assert len(splits) == self.size + 1
             word = splits[0]
             embedding = np.array([float(s) for s in splits[1:]])
