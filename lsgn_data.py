@@ -48,7 +48,7 @@ class LSGNData(object):
     if config["lm_path"]:
       if "tfhub" in config["lm_path"]:
         print ("Using tensorflow hub:", config["lm_path"])
-        self.lm_hub = hub.Module(config["lm_path"].encode("utf-8"), trainable=False) 
+        self.lm_hub = hub.Module(config["lm_path"], trainable=False) 
       else:
         self.lm_file = h5py.File(self.config["lm_path"], "r")
       self.lm_layers = self.config["lm_layers"]
