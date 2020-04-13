@@ -73,7 +73,7 @@ if __name__ == "__main__":
         doc_example["predicted_srl"] = []
         word_offset = 0
         for j, sentence in enumerate(sentences):
-          for pred, args in predictions["srl"][j].iteritems():
+          for pred, args in predictions["srl"][j].items():
             doc_example["predicted_srl"].extend([
                 [int(pred + word_offset), int(a[0] + word_offset),
                  int(a[1] + word_offset), a[2]] for a in args])

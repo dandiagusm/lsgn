@@ -65,10 +65,10 @@ def pad_batch_tensors(tensor_dicts, tensor_name):
   tensors = [np.expand_dims(td[tensor_name], 0) for td in tensor_dicts]
   shapes = [t.shape for t in tensors] 
   # Take max shape along each dimension.
-  max_shape = np.max(zip(*shapes), axis=1)
+  max_shape = np.max(list(zip(*shapes)), axis=1)
   #print tensor_name, batch_size, tensors[0].shape, max_shape
   zeros = np.zeros_like(max_shape)
-  padded_tensors = [np.pad(t, zip(zeros, max_shape - t.shape), "constant") for t in tensors]
+  padded_tensors = [np.pad(t, tuple(zip(zeros, max_shape - t.shape)), "constant") for t in tensors]
   return np.concatenate(padded_tensors, axis=0)
 
 
