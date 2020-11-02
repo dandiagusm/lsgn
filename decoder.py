@@ -51,6 +51,7 @@ if __name__ == "__main__":
   with tf.Session() as session:
     checkpoint_path = os.path.join(log_dir, "model.max.ckpt")
     tf.global_variables_initializer().run()
+    saver.save(session, checkpoint_path)
     saver.restore(session, checkpoint_path)
 
     with open(output_filename, "w") as f:
