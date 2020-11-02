@@ -47,11 +47,10 @@ if __name__ == "__main__":
       variables_to_restore.append(var)
   saver = tf.train.Saver(variables_to_restore)
   log_dir = config["log_dir"]
-
+  tf.global_variables_initializer().run()
+  saver.save(session, checkpoint_path)
   with tf.Session() as session:
     checkpoint_path = os.path.join(log_dir, "model.max.ckpt")
-    tf.global_variables_initializer().run()
-    saver.save(session, checkpoint_path)
     saver.restore(session, checkpoint_path)
 
     with open(output_filename, "w") as f:
