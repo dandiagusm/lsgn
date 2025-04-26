@@ -1,4 +1,4 @@
-# Labeled Span Graph Network (Under Construction)
+# Labeled Span Graph Network
 
 This repository contains code and models for replicating results from the following publication:
 * [Jointly Predicting Predicates and Arguments in Neural Semantic Role Labeling](https://arxiv.org/abs/1805.04787)
